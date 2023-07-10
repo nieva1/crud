@@ -1,0 +1,85 @@
+body {
+   background-image: url(../static/imagenes/pizzaBack.jpg);
+   background-size: cover;
+   background-attachment: fixed;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+   color: #e5bb74;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+   color: #ff9907;
+}
+
+header {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: black;
+}
+
+header a {
+   text-decoration: none;
+   color: black;
+}
+
+header a:hover {
+   color: black;
+}
+
+.container {
+   margin-top: 70px;
+   margin-bottom: 70px;
+   font-weight: bold;
+}
+
+.container .h1 {
+   font-family: Arial, Helvetica, sans-serif;
+   text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+   -webkit-text-stroke: 1px black;
+   -webkit-text-fill-color: #ff9907;
+   font-weight: bolder;
+   opacity: 1;
+}
+
+.titulo {
+   font-family: Arial, Helvetica, sans-serif;
+   -webkit-text-fill-color: #ff9907;
+   font-weight: bolder;
+   opacity: 1;
+}
+
+.card {
+   background-color: #e5bb74;
+}
+
+
+#btn_añadir {
+   background-color: rgba(204, 62, 7, 0.726);
+   transition: transform 0.2s ease-in-out;
+   border: 0px solid rgba(204, 62, 7, 0.726);
+}
+
+#btn_añadir:hover {
+   transform: scale(1.05);
+}
+
+.item-carrito {
+   background-color: #dbaf65;
+   border-radius: 10px;
+}
+
+.container .titulo_add {
+   color: rgba(255, 255, 255, 0.836);
+   font-weight: bold;
+}
+
+.form-group {
+   color: rgba(255, 255, 255, 0.836);
+   font-weight: bold;
+}
+
+::-webkit-scrollbar {
+   display: none;
+}

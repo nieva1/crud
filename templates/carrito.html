@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Carrito</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MARCA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="">Carrito <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-dark text-light d-flex">
+                <div class="col-6 d-flex align-items-center titulo">
+                    <h4>Carrito de compras</h4>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <form action="/borrar_carrito" method="post">
+                        <button type="submit" class="btn btn-danger">Borrar Carrito</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-5">
+                    {% for item in carrito %}
+                    {% set product = item['product'] %}
+                    {% set cantidad = item['cantidad'] %}
+
+                    <div class="col-12 d-flex mb-2 mt-2 item-carrito">
+                        <div class="img-fluid">
+                            <img class="img-responsive" style="max-width: 200px;" src="{{ product['image'] }}"
+                                alt="prewiew">
+                        </div>
+                        <div class="col-xs-4 col-md-6 d-flex flex-column justify-content-center">
+                            <h4 class="product-name"><strong> {{product['name']}} </strong></h4>
+                            <h4><small>Descripción</small></h4>
+                        </div>
+                        <div class="col-xs-6 col-md-4 row d-flex align-content-center">
+                            <div class="col-xs-6 col-md-6 text-right" style="padding-top: 5px">
+                                <h6><strong>{{ product['price'] }}<span class="text-muted">x</span></strong></h6>
+                            </div>
+                            <div class="col-xs-4 col-md-4">
+                                <input type="text" class="form-control input-sm" value="{{ cantidad }}">
+                            </div>
+                            <div class="col-xs-2 col-md-2">
+                                <form action="/eliminar_del_carrito" method="post">
+                                    <input type="hidden" name="product_id" value="{{ product['id'] }}">
+                                    <button type="submit" class="btn btn-outline-danger btn-xs">X</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="card-footer col-12 d-flex flex-column">
+                    <div class="col-12 d-flex justify-content-end">
+                        <p>Precio total:</p><b>{{total_carrito}}$</b>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <a href="" class="btn btn-success">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
